@@ -1,0 +1,95 @@
+{
+  "databaseChangeLog": [
+    {
+      "changeSet": {
+        "id": "2017-01-21-01",
+        "author": "Kostyantyn.Panchenko",
+        "changes": [
+          {
+            "createTable": {
+              "catalogName": "itrawell",
+              "columns": [
+                {
+                  "column": {
+                    "autoIncrement": true,
+                    "constraints": {
+                      "primaryKey": true,
+                      "primaryKeyName": "visitor_pkey"
+                    },
+                    "name": "id",
+                    "type": "INT"
+                  }
+                },
+                {
+                  "column": {
+                    "name": "name",
+                    "type": "VARCHAR(40)"                  
+                  }
+                },
+                {  
+                  "column": {
+                    "name": "password",
+                    "type": "VARCHAR(20)"
+                  }
+                },
+                {
+                  "column": {
+                    "name": "email",
+                    "type": "VARCHAR(40)"
+                  }
+                },                
+                {
+                  "column": {
+                   "name": "created",
+                   "type": "DATETIME"                 
+                  }
+                }
+              ],
+              "tableName": "visitors"
+            }
+          },
+          {
+            "addUniqueConstraint": {
+              "catalogName": "itrawell",
+              "columnNames": "name",
+              "constraintName": "unique_name",
+              "tableName": "visitors"
+            }          
+          },
+          {
+            "addUniqueConstraint": {
+              "catalogName": "itrawell",
+              "columnNames": "email",
+              "constraintName": "unique_email",
+              "tableName": "visitors"
+            }          
+          },
+          {
+            "addNotNullConstraint": {
+              "catalogName": "itrawell",
+              "columnDataType": "VARCHAR(40)",
+              "columnName": "name",
+              "tableName": "visitors"
+            }
+          },
+          {
+            "addNotNullConstraint": {
+              "catalogName": "itrawell",
+              "columnDataType": "VARCHAR(20)",
+              "columnName": "password",
+              "tableName": "visitors"
+            }
+          },
+          {
+            "addNotNullConstraint": {
+              "catalogName": "itrawell",
+              "columnDataType": "VARCHAR(40)",
+              "columnName": "email",
+              "tableName": "visitors"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

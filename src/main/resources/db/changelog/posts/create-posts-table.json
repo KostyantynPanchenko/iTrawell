@@ -1,0 +1,97 @@
+{
+  "databaseChangeLog": [
+    {
+      "changeSet": {
+        "id": "2017-01-22-01",
+        "author": "Kostyantyn.Panchenko",
+        "changes": [
+          {
+            "createTable": {
+              "catalogName": "itrawell",
+              "columns": [
+                {
+                  "column": {
+                    "autoIncrement": true,
+                    "constraints": {
+                      "primaryKey": true,
+                      "primaryKeyName": "post_pkey"
+                    },
+                    "name": "id",
+                    "type": "INT"
+                  }
+                },
+                {
+                  "column": {
+                    "name": "title",
+                    "type": "VARCHAR(100)"                  
+                  }
+                },
+                {  
+                  "column": {
+                    "name": "content",
+                    "type": "VARCHAR(2000)"
+                  }
+                },
+                {
+                  "column": {
+                    "name": "country",
+                    "type": "VARCHAR(40)"
+                  }
+                },                
+                {
+                  "column": {
+                    "name": "region",
+                    "type": "VARCHAR(40)"
+                  }
+                },                
+                {
+                  "column": {
+                    "name": "city",
+                    "type": "VARCHAR(40)"
+                  }
+                },                
+                {
+                  "column": {
+                   "name": "created",
+                   "type": "DATETIME"                 
+                  }
+                },
+                {
+                  "column": {
+                    "name": "image_id",
+                    "type": "INT"
+                  }
+                }
+              ],
+              "tableName": "posts"
+            }
+          },
+          {
+            "addUniqueConstraint": {
+              "catalogName": "itrawell",
+              "columnNames": "title",
+              "constraintName": "unique_value",
+              "tableName": "posts"
+            }          
+          },
+          {
+            "addNotNullConstraint": {
+              "catalogName": "itrawell",
+              "columnDataType": "VARCHAR(100)",
+              "columnName": "title",
+              "tableName": "posts"
+            }
+          },
+          {
+            "addNotNullConstraint": {
+              "catalogName": "itrawell",
+              "columnDataType": "VARCHAR(2000)",
+              "columnName": "content",
+              "tableName": "posts"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

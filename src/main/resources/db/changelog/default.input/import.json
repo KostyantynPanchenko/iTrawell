@@ -1,0 +1,23 @@
+{
+  "databaseChangeLog": [
+    {
+      "changeSet": {
+        "id": 2017-21-01-01,
+        "author": "Kostyantyn.Panchenko",
+        "changes": [
+          {
+              "sqlFile": {
+              "dbms": "MySQL",
+              "encoding": "utf8",
+              "endDelimiter": ";",
+              "path": "import.sql",
+              "relativeToChangelogFile": true,
+              "splitStatements": true,
+              "stripComments": true
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

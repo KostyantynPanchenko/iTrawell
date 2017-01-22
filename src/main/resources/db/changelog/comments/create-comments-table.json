@@ -1,0 +1,107 @@
+{
+  "databaseChangeLog": [
+    {
+      "changeSet": {
+        "id": "2017-01-22-01",
+        "author": "Kostyantyn.Panchenko",
+        "changes": [
+          {
+            "createTable": {
+              "catalogName": "itrawell",
+              "columns": [
+                {
+                  "column": {
+                    "autoIncrement": true,
+                    "constraints": {
+                      "primaryKey": true,
+                      "primaryKeyName": "visitor_pkey"
+                    },
+                    "name": "id",
+                    "type": "INT"
+                  }
+                },
+                {
+                  "column": {
+                    "name": "content",
+                    "type": "VARCHAR(400)"                  
+                  }
+                },
+                {  
+                  "column": {
+                    "name": "author_id",
+                    "type": "INT"
+                  }
+                },
+                {
+                  "column": {
+                    "name": "post_id",
+                    "type": "INT"
+                  }
+                },                
+                {
+                  "column": {
+                   "name": "created",
+                   "type": "DATETIME"                 
+                  }
+                }
+              ],
+              "tableName": "comments"
+            }
+          },
+          {
+            "addUniqueConstraint": {
+              "catalogName": "itrawell",
+              "columnNames": "content, author_id, post_id",
+              "constraintName": "unique_value",
+              "tableName": "comments"
+            }          
+          },
+          {
+            "addNotNullConstraint": {
+              "catalogName": "itrawell",
+              "columnDataType": "VARCHAR(400)",
+              "columnName": "content",
+              "tableName": "comments"
+            }
+          },
+          {
+            "addNotNullConstraint": {
+              "catalogName": "itrawell",
+              "columnDataType": "INT",
+              "columnName": "author_id",
+              "tableName": "comments"
+            }
+          },
+          {
+            "addNotNullConstraint": {
+              "catalogName": "itrawell",
+              "columnDataType": "INT",
+              "columnName": "post_id",
+              "tableName": "comments"
+            }
+          },
+          {
+            "addForeignKeyConstraint": {
+              "baseColumnNames": "author_id",
+              "baseTableName": "comments",
+              "constraintName": "fk_comment_author",
+              "onDelete": "CASCADE",
+              "referencedColumnNames": "id",
+              "referencedTableName": "visitors"
+            }
+          },
+          {
+            "addForeignKeyConstraint": {
+              "baseColumnNames": "post_id",
+              "baseTableName": "comments",
+              "constraintName": "fk_comment_post",
+              "onDelete": "CASCADE",
+              "referencedColumnNames": "id",
+              "referencedTableName": "posts"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+    "databaseChangeLog": [
+        {
+            "includeAll": {
+                "path": "classpath:/db/changelog/visitors/"
+            }
+        },
+        {
+            "includeAll": {
+                "path": "classpath:/db/changelog/posts/"
+            }
+        },
+        {
+            "includeAll": {
+                "path": "classpath:/db/changelog/comments/"
+            }
+        },
+        {
+            "includeAll": {
+                "path": "classpath:/db/changelog/images/"
+            }
+        },
+        {
+            "includeAll": {
+                "path": "classpath:/db/changelog/default.input/"
+            }
+        }
+    ]
+}
