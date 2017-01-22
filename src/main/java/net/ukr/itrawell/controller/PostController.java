@@ -1,7 +1,5 @@
 package net.ukr.itrawell.controller;
 
-import java.util.Calendar;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,14 +14,7 @@ import net.ukr.itrawell.service.PostService;
 public class PostController {
 
     @Autowired
-    private PostService postService;
-    
-    @GetMapping("/")
-    public String home(Model model) {
-        model.addAttribute("posts", postService.findAll());
-        model.addAttribute("today", Calendar.getInstance());
-        return "home";
-    }
+    private PostService postService;   
     
     @GetMapping("/{id}")
     public String getPost(@PathVariable("id") Integer id, Model model) {        
