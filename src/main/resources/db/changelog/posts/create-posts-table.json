@@ -29,7 +29,7 @@
                 {  
                   "column": {
                     "name": "content",
-                    "type": "VARCHAR(2000)"
+                    "type": "VARCHAR(20000)"
                   }
                 },
                 {

@@ -21,6 +21,5 @@ public class HomeController {
         model.addAttribute("today", Calendar.getInstance());
         return "home";
     }
-    
 
 }
