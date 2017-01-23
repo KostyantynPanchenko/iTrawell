@@ -6,7 +6,7 @@
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css" />
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Raleway" />
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
     <link rel="icon" type="image/png" href="../static/img/icon.png" th:href="@{/img/icon.png}" />
 
     <style>
@@ -21,11 +21,11 @@
 </head>
 <body class="w3-light-grey">
     <ul class="w3-navbar w3-black">
-        <li><a href="#" class="w3-hover-none w3-hover-text-grey w3-padding-large"><i class="fa fa-home w3-large"></i> Домівка</a></li>
-        <li><a href="#" class="w3-hover-none w3-hover-text-grey w3-padding-large">Додати подорож</a></li>
-        <li><a href="#" class="w3-hover-none w3-hover-text-grey w3-padding-large">Link 2</a></li>
-        <li><a href="#" class="w3-hover-none w3-hover-text-grey w3-padding-large"><i class="fa fa-search w3-large"></i> Пошук</a></li>
-        <li><a href="#" class="w3-hover-none w3-hover-text-grey w3-padding-large"><i class="fa fa-sign-in w3-large"></i> Увійти</a></li>        
+        <li><a href="home.html" th:href="@{/}" class="w3-hover-none w3-hover-text-grey w3-padding-large"><i class="fa fa-home w3-large"></i> Домівка</a></li>
+        <li><a href="new-post.html" th:href="@{/post/new}" class="w3-hover-none w3-hover-text-grey w3-padding-large">Додати подорож</a></li>
+        <li><a href="#" th:href="@{/}" class="w3-hover-none w3-hover-text-grey w3-padding-large">Link 2</a></li>
+        <li><a href="#" th:href="@{/}" class="w3-hover-none w3-hover-text-grey w3-padding-large"><i class="fa fa-search w3-large"></i> Пошук</a></li>
+        <li><a href="login.html" th:href="@{/login}" class="w3-hover-none w3-hover-text-grey w3-padding-large"><i class="fa fa-sign-in w3-large"></i> Увійти</a></li>        
     </ul>
 
     <!-- w3-content defines a container for fixed size centered content,
@@ -36,9 +36,6 @@
         <div class="w3-container w3-center w3-padding-32">
             <h1><b>iTraWell</b></h1>
             <p>Вітаємо у блозі <span class="w3-tag">Юлії Полєтаєвої</span></p>
-            <p>
-                Сьогодні <span th:text="${#calendars.format(today,'dd MMMM yyyy')}">13 May 2011</span>
-            </p>
         </div>
 
         <!-- Grid -->
@@ -53,31 +50,30 @@
                                 <div class="w3-twothird">
                                     <p>
                                     <label><b>Заголовок:</b></label>
-                                    <input class="w3-input w3-border w3-animate-input" style="width:50%" type="text" placeholder="One upon a time...">
+                                    <input class="w3-input w3-border w3-animate-input w3-hover-light-grey" style="width:50%" type="text" name="title" placeholder="One upon a time..." required="required" />
                                     </p>
                                     <p>
-                                    <label><b>Головне фото:</b></label>
-                                    <!--input id="file" class="inputfile w3-input w3-border w3-animate-input" style="display:none" type="file" /-->
-                                    <input id="file" class="inputfile w3-input w3-border w3-animate-input" style="width: 0.1px; height: 0.1px; opacity: 0; overflow: hidden; position: absolute; z-index: -1;" type="file" />
-                                    <label id="fileLabel" for="file" style="width: 50%; color: grey; border: 1px solid #ccc; display: block; padding: 8px 6px; cursor: pointer;" class="w3-center">&raquo; К л і к &laquo;</label>
+                                    <label><b>Головне фото:</b></label>                                    
+                                    <input id="file" type="file" name="image" class="inputfile w3-input w3-border w3-animate-input" style="width: 0.1px; height: 0.1px; opacity: 0; overflow: hidden; position: absolute; z-index: -1;" />
+                                    <label id="fileLabel" for="file" style="width: 50%; color: grey; border: 1px solid #ccc; display: block; padding: 8px 6px; cursor: pointer;" class="w3-btn w3-border w3-white w3-center w3-hover-black">&raquo; К л і к &laquo;</label>
                                     </p>
                                     <p>
                                     <label><b>Підпис до фото:</b></label>
-                                    <input class="w3-input w3-border w3-animate-input" style="width:50%" type="text" placeholder="На фото, а бімба!">
+                                    <input class="w3-input w3-border w3-animate-input w3-hover-light-grey" style="width:50%" type="text" name="label" placeholder="На фото, а бімба!" />
                                     </p>
                                 </div>
                                 <div class="w3-third">
                                     <p>
                                     <label><b>Країна:</b></label>
-                                    <input class="w3-input w3-border w3-animate-input" style="width:50%" type="text" placeholder="USA">
+                                    <input class="w3-input w3-border w3-animate-input w3-hover-light-grey" style="width:50%" type="text" name="country" placeholder="USA" />
                                     </p>
                                     <p>
                                     <label><b>Регіон:</b></label>
-                                    <input class="w3-input w3-border w3-animate-input" style="width:50%" type="text" placeholder="East Coast">
+                                    <input class="w3-input w3-border w3-animate-input w3-hover-light-grey" style="width:50%" type="text" name="region" placeholder="East Coast" />
                                     </p>
                                     <p>
                                     <label><b>Місто:</b></label>
-                                    <input class="w3-input w3-border w3-animate-input" style="width:50%" type="text" placeholder="New York">
+                                    <input class="w3-input w3-border w3-animate-input w3-hover-light-grey" style="width:50%" type="text" name="city" placeholder="New York" />
                                     </p>
                                 </div>
                             </div>
@@ -85,7 +81,7 @@
                             <div class="w3-row w3-section">
                                 <div>
                                     <label><b>Опис:</b></label>
-                                    <textarea name="content" class="w3-input w3-border" rows="8" maxlength="4000" wrap="hard" placeholder="Розкажи про подорож і враження... Не більше 20'000 символів." required="required"></textarea>
+                                    <textarea name="content" class="w3-input w3-border w3-hover-light-grey" rows="8" maxlength="4000" wrap="hard" placeholder="Розкажи про подорож і враження... Не більше 20'000 символів." required="required"></textarea>
                                 </div>
                             </div>
                             <div class="w3-row">
@@ -146,9 +142,9 @@
 
             input.addEventListener('change', function(e) {
                 var fileName = '';
-                if (this.files && this.files.length > 1)
+                <!--if (this.files && this.files.length > 1)
                    fileName = (this.getAttribute('data-multiple-caption' ) || '').replace('{count}', this.files.length);
-                else
+                else-->
                     fileName = e.target.value.split('\\').pop();
 
                 if (fileName)

@@ -21,4 +21,9 @@ public class PostController {
         model.addAttribute("post", postService.findOne(id));
         return "post";
     }
+    
+    @GetMapping("/new")
+    public String getPost() {
+        return "new-post";
+    }
 }
