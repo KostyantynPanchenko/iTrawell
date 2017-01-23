@@ -6,6 +6,7 @@
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css" />
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Raleway" />
+    <link rel="icon" type="image/png" href="img/icon.png" th:href="@{/img/icon.png}" />
 
     <style>
         body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
@@ -35,7 +36,7 @@
         <!-- About Card on medium screens -->
         <div class="w3-hide-large w3-hide-small w3-margin-top w3-margin-bottom">
             <div class="w3-container w3-white w3-padding-32">
-                <img src="img/img_avatar.jpg" alt="Me" style="width:150px" class="w3-left w3-round-large w3-margin-right" />
+                <img src="img/img_avatar.jpg" alt="Me" style="width:150px" class="w3-left w3-round-large w3-margin-right" th:src="@{/img/avatar.jpg}" />
                 Моя подорож це розчинитися, підлаштуватися, зрозуміти середовище і спостерігати людей. Саме тому я все організовую сама: транспорт, готелі, вхідні квитки, історичні довідки, архітектурні особливості пункту призначення і т.д. Особливо ніжно ставлюсь до замків і фортець. Навіть у відрядженнях намагаюсь розвідати довкілля і поспілкуватись з місцевими, бо саме так можна подивитись на країну поза стереотипами. Послугами гідів не користуюсь, бо люблю картинки без натовпів і супровідного шуму. Подорожую сама. Дуже хочу до Латинської Америки чи до Азії на кілька тижнів чи місяців. Але поки що нема з ким, та й з роботи більш, ніж на два тижні не відпускають. Тому катаюсь короткостроково і Європою.
                 <br />Друзі давно казали “пиши про свої мандрівки”. І от я пишу.
                 </div>
@@ -43,7 +44,7 @@
 
         <!-- About Card on small screens -->
         <div class="w3-hide-large w3-hide-medium w3-margin-top w3-margin-bottom">			
-            <img src="img/img_avatar.jpg" style="width:100%" alt="Me" />
+            <img src="img/img_avatar.jpg" style="width:100%" alt="Me" th:src="@{/img/avatar.jpg}" />
             <div class="w3-container w3-white">
                 <h4><b>Юлія Полєтаєва</b></h4>
                 Моя подорож це розчинитися, підлаштуватися, зрозуміти середовище і спостерігати людей. Саме тому я все організовую сама: транспорт, готелі, вхідні квитки, історичні довідки, архітектурні особливості пункту призначення і т.д. Особливо ніжно ставлюсь до замків і фортець. Навіть у відрядженнях намагаюсь розвідати довкілля і поспілкуватись з місцевими, бо саме так можна подивитись на країну поза стереотипами. Послугами гідів не користуюсь, бо люблю картинки без натовпів і супровідного шуму. Подорожую сама. Дуже хочу до Латинської Америки чи до Азії на кілька тижнів чи місяців. Але поки що нема з ким, та й з роботи більш, ніж на два тижні не відпускають. Тому катаюсь короткостроково і Європою.
@@ -123,49 +124,8 @@
             </div>
         <!-- END BLOG ENTRIES -->
         </div>
-
-        <!-- Introduction menu -->
-        <div class="w3-col l4 w3-hide-medium w3-hide-small">
-        <!-- About Card -->
-            <div class="w3-card-2 w3-margin w3-margin-top">
-                <img src="img/img_avatar.jpg" style="width:100%" />
-                <div class="w3-container w3-white">
-                    <h4><b>Юлія Полєтаєва</b></h4>
-                     Моя подорож це розчинитися, підлаштуватися, зрозуміти середовище і спостерігати людей. Саме тому я все організовую сама: транспорт, готелі, вхідні квитки, історичні довідки, архітектурні особливості пункту призначення і т.д. Особливо ніжно ставлюсь до замків і фортець. Навіть у відрядженнях намагаюсь розвідати довкілля і поспілкуватись з місцевими, бо саме так можна подивитись на країну поза стереотипами. Послугами гідів не користуюсь, бо люблю картинки без натовпів і супровідного шуму. Подорожую сама. Дуже хочу до Латинської Америки чи до Азії на кілька тижнів чи місяців. Але поки що нема з ким, та й з роботи більш, ніж на два тижні не відпускають. Тому катаюсь короткостроково і Європою.
-                <br />Друзі давно казали “пиши про свої мандрівки”. І от я пишу.
-                </div>
-            </div><hr />
-
-            <!-- Posts -->
-            <div class="w3-card-2 w3-margin">
-                <div class="w3-container w3-padding">
-                    <h4>Популярні записи</h4>
-                </div>
-                <ul class="w3-ul w3-hoverable w3-white">
-                <li class="w3-padding-16">
-                    <img src="img/img_workshop.jpg" alt="Image" class="w3-left w3-margin-right" style="width:50px" />
-                        <span class="w3-large">Lorem</span><br />
-                        <span>Sed mattis nunc</span>
-                    </li>
-                    <li class="w3-padding-16">
-                        <img src="img/img_gondol.jpg" alt="Image" class="w3-left w3-margin-right" style="width:50px" />
-                        <span class="w3-large">Ipsum</span><br />
-                        <span>Praes tinci sed</span>
-                    </li>
-                    <li class="w3-padding-16">
-                        <img src="img/img_skies.jpg" alt="Image" class="w3-left w3-margin-right" style="width:50px" />
-                        <span class="w3-large">Dorum</span><br />
-                        <span>Ultricies congue</span>
-                    </li>
-                    <li class="w3-padding-16 w3-hide-medium w3-hide-small">
-                        <img src="img/img_rock.jpg" alt="Image" class="w3-left w3-margin-right" style="width:50px" />
-                        <span class="w3-large">Mingsum</span><br />
-                        <span>Lorem ipsum dipsum</span>
-                    </li>
-                </ul>
-            </div>
-            <hr />
-
+        
+        <div class="w3-col l4 w3-hide-medium w3-hide-small">  
             <!-- Labels / tags -->
             <div class="w3-card-2 w3-margin">
             <div class="w3-container w3-padding">
@@ -190,8 +150,6 @@
                 </p>
                 </div>
             </div>
-
-        <!-- END Introduction Menu -->
         </div>
 
         <!-- END GRID -->
