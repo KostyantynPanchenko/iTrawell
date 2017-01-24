@@ -44,7 +44,7 @@
         <!-- About Card on medium screens -->
         <div class="w3-hide-large w3-hide-small w3-margin-top w3-margin-bottom">
             <div class="w3-container w3-white w3-padding-32">
-                <img src="img/img_avatar.jpg" alt="Me" style="width:150px" class="w3-left w3-round-large w3-margin-right" th:src="@{/img/avatar.jpg}" />
+                <img src="../static/img/img_avatar.jpg" alt="Me" style="width:150px" class="w3-left w3-round-large w3-margin-right" th:src="@{/img/avatar.jpg}" />
                 Моя подорож це розчинитися, підлаштуватися, зрозуміти середовище і спостерігати людей. Саме тому я все організовую сама: транспорт, готелі, вхідні квитки, історичні довідки, архітектурні особливості пункту призначення і т.д. Особливо ніжно ставлюсь до замків і фортець. Навіть у відрядженнях намагаюсь розвідати довкілля і поспілкуватись з місцевими, бо саме так можна подивитись на країну поза стереотипами. Послугами гідів не користуюсь, бо люблю картинки без натовпів і супровідного шуму. Подорожую сама. Дуже хочу до Латинської Америки чи до Азії на кілька тижнів чи місяців. Але поки що нема з ким, та й з роботи більш, ніж на два тижні не відпускають. Тому катаюсь короткостроково і Європою.
                 <br />Друзі давно казали “пиши про свої мандрівки”. І от я пишу.
                 </div>
@@ -52,7 +52,7 @@
 
         <!-- About Card on small screens -->
         <div class="w3-hide-large w3-hide-medium w3-margin-top w3-margin-bottom">			
-            <img src="img/img_avatar.jpg" style="width:100%" alt="Me" th:src="@{/img/avatar.jpg}" />
+            <img src="../static/img/img_avatar.jpg" style="width:100%" alt="Me" th:src="@{/img/avatar.jpg}" />
             <div class="w3-container w3-white">
                 <h4><b>Юлія Полєтаєва</b></h4>
                 Моя подорож це розчинитися, підлаштуватися, зрозуміти середовище і спостерігати людей. Саме тому я все організовую сама: транспорт, готелі, вхідні квитки, історичні довідки, архітектурні особливості пункту призначення і т.д. Особливо ніжно ставлюсь до замків і фортець. Навіть у відрядженнях намагаюсь розвідати довкілля і поспілкуватись з місцевими, бо саме так можна подивитись на країну поза стереотипами. Послугами гідів не користуюсь, бо люблю картинки без натовпів і супровідного шуму. Подорожую сама. Дуже хочу до Латинської Америки чи до Азії на кілька тижнів чи місяців. Але поки що нема з ким, та й з роботи більш, ніж на два тижні не відпускають. Тому катаюсь короткостроково і Європою.
@@ -67,7 +67,7 @@
         <div class="w3-col l8 s12">
         <!-- Blog entry -->
             <div class="w3-card-4 w3-margin w3-white" th:each="post: ${posts}">
-                <img src="img/img_stockholm.jpg" style="width:100%" th:src="@{'/image/' + ${post.image.id}}" />
+                <img src="../static/img/img_stockholm.jpg" style="width:100%" th:src="@{'/image/' + ${post.image.id}}" />
                 <div class="w3-container w3-padding-8">
                     <h3><b th:if="${post.city}" th:text="${post.city}"></b><b th:if="${post.region}" th:text="| , ${post.region}|"></b><b th:if="${post.country}" th:text="| , ${post.country}|">Місто, регіон, країна</b></h3>
                     <h5><span th:text="${post.title}">Заголовок</span> <b><span class="w3-opacity" th:text="${#temporals.format(post.created, 'dd MMMM yyyy')}">20 свербня 2016</span></b></h5>
@@ -89,7 +89,7 @@
 
             <!-- PROTOTYPE -->
             <div class="w3-card-4 w3-margin w3-white" th:remove="all">
-                <img src="img/img_stockholm.jpg" alt="Stockholm" style="width:100%" th:src="@{/image/1}" />
+                <img src="../static/img/img_stockholm.jpg" alt="Stockholm" style="width:100%" th:src="@{/image/1}" />
                 <div class="w3-container w3-padding-8">
                     <h3><b>Stockholm, Stockholm County, Sweden</b></h3>
                     <h5>When the sun is on your side, <span class="w3-opacity">20 серпня 2016</span></h5>
@@ -111,7 +111,7 @@
 
             <!-- PROTOTYPE -->
             <div class="w3-card-4 w3-margin w3-white" th:remove="all">
-                <img src="img/img_krakov.jpg" alt="Krakov" style="width:100%" th:src="@{/image/2}" />
+                <img src="../static/img/img_krakov.jpg" alt="Krakov" style="width:100%" th:src="@{/image/2}" />
                 <div class="w3-container w3-padding-8">
                     <h3><b>Krakow, Lesser Poland Voivodeship, Poland</b></h3>
                     <h5>Кожному своє, <span class="w3-opacity">27  червня 2016</span></h5>
@@ -133,7 +133,46 @@
         <!-- END BLOG ENTRIES -->
         </div>
         
-        <div class="w3-col l4 w3-hide-medium w3-hide-small">  
+        <div class="w3-col l4 w3-hide-medium w3-hide-small">
+            <!-- About Card -->
+            <div class="w3-card-2 w3-margin w3-margin-top">
+                <img th:src="@{/img/img_avatar.jpg}" src="../static/img/img_avatar.jpg" style="width:100%" />
+                <div class="w3-container w3-white">
+                <h4><b>Юлія Полєтаєва</b></h4>
+                     Моя подорож це розчинитися, підлаштуватися, зрозуміти середовище і спостерігати людей. Саме тому я все організовую сама: транспорт, готелі, вхідні квитки, історичні довідки, архітектурні особливості пункту призначення і т.д. Особливо ніжно ставлюсь до замків і фортець. Навіть у відрядженнях намагаюсь розвідати довкілля і поспілкуватись з місцевими, бо саме так можна подивитись на країну поза стереотипами. Послугами гідів не користуюсь, бо люблю картинки без натовпів і супровідного шуму. Подорожую сама. Дуже хочу до Латинської Америки чи до Азії на кілька тижнів чи місяців. Але поки що нема з ким, та й з роботи більш, ніж на два тижні не відпускають. Тому катаюсь короткостроково і Європою.
+                <br />Друзі давно казали “пиши про свої мандрівки”. І от я пишу.
+                </div>
+            </div><hr />
+
+            <!-- Posts -->
+            <div class="w3-card-2 w3-margin">
+                <div class="w3-container w3-padding">
+                    <h4>Популярні записи</h4>
+                </div>
+                <ul class="w3-ul w3-hoverable w3-white">
+                    <li class="w3-padding-16">
+                        <img th:src="@{/img/img_workshop.jpg}" src="../static/img/img_workshop.jpg" alt="Image" class="w3-left w3-margin-right" style="width:50px" />
+                        <span class="w3-large">Lorem</span><br />
+                        <span>Sed mattis nunc</span>
+                    </li>
+                    <li class="w3-padding-16">
+                        <img th:src="@{/img/img_gondol.jpg}" src="../static/img/img_gondol.jpg" alt="Image" class="w3-left w3-margin-right" style="width:50px" />
+                        <span class="w3-large">Ipsum</span><br />
+                        <span>Praes tinci sed</span>
+                    </li>
+                    <li class="w3-padding-16">
+                        <img th:src="@{/img/img_skies.jpg}" src="../static/img/img_skies.jpg" alt="Image" class="w3-left w3-margin-right" style="width:50px" />
+                        <span class="w3-large">Dorum</span><br />
+                        <span>Ultricies congue</span>
+                    </li>
+                    <li class="w3-padding-16 w3-hide-medium w3-hide-small">
+                        <img th:src="@{/img/img_rock.jpg}" src="../static/img/img_rock.jpg" alt="Image" class="w3-left w3-margin-right" style="width:50px" />
+                        <span class="w3-large">Mingsum</span><br />
+                        <span>Lorem ipsum dipsum</span>
+                    </li>
+                </ul>
+            </div>
+            <hr />		
             <!-- Labels / tags -->
             <div class="w3-card-2 w3-margin">
             <div class="w3-container w3-padding">
