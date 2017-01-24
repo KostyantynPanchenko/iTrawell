@@ -16,14 +16,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
             .and()
             .formLogin()
 //                .loginPage("/login")
+//                .permitAll()
+            .and()
+            .logout()
+                .logoutUrl("/logout")
+                .logoutSuccessUrl("/")
+                .invalidateHttpSession(true)
                 .permitAll()
             .and()
-//            .logout()
-//                .logoutUrl("/logout")
-//                .logoutSuccessUrl("/")
-//                .invalidateHttpSession(true)
-//                .permitAll()
-//            .and()
+//            .csrf().disable()
             .httpBasic();
     }
     

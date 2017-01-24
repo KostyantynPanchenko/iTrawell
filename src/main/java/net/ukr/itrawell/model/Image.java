@@ -17,6 +17,10 @@ public class Image {
     private byte[] data;
     
     public Image() { }
+    
+    public Image(byte[] data) {
+        this.data = data;
+    }
 
     public byte[] getData() {
         return data;

@@ -32,16 +32,17 @@ public class ImageController {
                     out.write(content);
                     out.flush();
                     out.close();
-                    System.out.printf("image %d retrieved%n", imageId);
                 } else {
+                    // TODO
                     System.out.println("response == null");
                 } 
             } else {
+             // TODO
                 System.out.println("data[] == null");
             }
         } catch (IOException e) {
+            // TODO
             // LOG IT!
         }
-        
     }
 }

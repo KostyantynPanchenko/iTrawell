@@ -63,22 +63,19 @@
 		<!-- Blog entry -->
 		<div class="w3-col l8 s12" th:object="${post}">	
 			<div class="w3-card-4 w3-margin w3-white">
-				<img th:src="@{'/image/' + *{image.id}}" src="../static/img/img_stockholm.jpg" alt="Stockholm" style="width:100%" />
+				<img th:if="${post.image}" th:src="@{|/image/*{image.id}|}" src="../static/img/img_stockholm.jpg" alt="Stockholm" style="width:100%" />
 				<div class="w3-container w3-padding-8">
-					<h3><b th:if="${post.city}" th:text="${post.city}"></b><b th:if="${post.region}" th:text="| , ${post.region}|"></b><b th:if="${post.country}" th:text="| , ${post.country}|">Місто, регіон, країна</b></h3>
+					<h3><b th:if="${post.city}" th:text="${post.city}"></b><b th:if="${post.region}" th:text="|, ${post.region}|"></b><b th:if="${post.country}" th:text="|, ${post.country}|">Місто, регіон, країна</b></h3>
 					<h5><span th:text="*{title}">Заголовок</span> <b><span class="w3-opacity" th:text="${#temporals.format(post.created, 'dd MMMM yyyy')}">20 свербня 2016</span></b></h5>
 				</div>
 
 				<div class="w3-container">
 					<p th:text="*{content}">Туту йде опис дорожі і бла-бла-бла</p>
-					  <!--div class="w3-row">
+					  <div class="w3-row">
 						<div class="w3-col m8 s12">
-							<p><button class="w3-btn w3-padding-large w3-white w3-border w3-hover-border-black"><b>ДІЗНАТИСЯ БІЛЬШЕ »</b></button></p>
+							<p><a href="" th:href="@{|/post/${post.id}/edit|}" class="w3-btn w3-padding-large w3-white w3-border w3-hover-border-black"><b>РЕДАГУВАТИ</b></a></p>
 						</div>
-						<div class="w3-col m4 w3-hide-small">
-							<p><span class="w3-padding-large w3-right"><b>Коментарі  </b> <span class="w3-tag">0</span></span></p>
-						</div>
-					  </div-->
+					  </div>
 				</div>
 			</div>
 			<hr />
@@ -93,6 +90,7 @@
 					<h4><b>Юлія Полєтаєва</b></h4>
 					 Моя подорож це розчинитися, підлаштуватися, зрозуміти середовище і спостерігати людей. Саме тому я все організовую сама: транспорт, готелі, вхідні квитки, історичні довідки, архітектурні особливості пункту призначення і т.д. Особливо ніжно ставлюсь до замків і фортець. Навіть у відрядженнях намагаюсь розвідати довкілля і поспілкуватись з місцевими, бо саме так можна подивитись на країну поза стереотипами. Послугами гідів не користуюсь, бо люблю картинки без натовпів і супровідного шуму. Подорожую сама. Дуже хочу до Латинської Америки чи до Азії на кілька тижнів чи місяців. Але поки що нема з ким, та й з роботи більш, ніж на два тижні не відпускають. Тому катаюсь короткостроково і Європою.
                 <br />Друзі давно казали “пиши про свої мандрівки”. І от я пишу.
+                <br />
 				</div>
 			</div><hr />
 			  

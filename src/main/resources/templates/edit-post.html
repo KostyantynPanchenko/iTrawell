@@ -4,6 +4,7 @@
     <title>iTrawell</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta charset="UTF-8" />
+    <link rel="stylesheet" href="../static/css/custom.css" th:href="@{/css/custom.css}" />
     <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css" />
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Raleway" />
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
@@ -11,6 +12,23 @@
 
     <style>
         body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
+        
+        .uploadLabel {
+            width: 50%;
+            color: grey;
+            border: 1px solid #ccc;
+            display: block;
+            padding: 8px 6px;
+        }
+        
+        .upload {
+            width: 0.1px;
+            height: 0.1px;
+            opacity: 0;
+            overflow: hidden;
+            position: absolute;
+            z-index: -1;
+        }
     </style>
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -45,35 +63,40 @@
              <div class="w3-col l8 s12">        
                 <div class="w3-card-4 w3-margin w3-white">
                     <div class="w3-container w3-padding-16">
-                        <form th:action="@{/post/new}" method="POST" enctype="multipart/form-data">
+                        <form th:action="@{|/post/${post.id}/edit|}" method="POST" enctype="multipart/form-data" id="editForm">
+                            <div th:if="${post.image}" class="w3-container w3-padding-0">
+                                <img th:src="@{|/image/${post.image.id}|}" src="../static/img/img_stockholm.jpg" alt="Stockholm" style="width:100%" />
+                                <input type="checkbox" id="deleteImage" name="deleteImage" class="w3-check"/>
+                                <label class="w3-validate">Видалити фото</label>
+                            </div>
                             <div class="w3-row w3-container w3-padding-0">
                                 <div class="w3-twothird">
                                     <p>
                                     <label><b>Заголовок:</b></label>
-                                    <input class="w3-input w3-border w3-animate-input w3-hover-light-grey" style="width:50%" type="text" name="title" placeholder="One upon a time..." required="required" />
+                                    <input type="text" name="title" th:value="${post.title}" class="w3-input w3-border w3-animate-input w3-hover-light-grey" style="width:50%" placeholder="One upon a time..." required="required" />
                                     </p>
                                     <p>
-                                    <label><b>Головне фото:</b></label>                                    
-                                    <input id="file" type="file" name="image" class="inputfile w3-input w3-border w3-animate-input" style="width: 0.1px; height: 0.1px; opacity: 0; overflow: hidden; position: absolute; z-index: -1;" />
-                                    <label id="fileLabel" for="file" style="width: 50%; color: grey; border: 1px solid #ccc; display: block; padding: 8px 6px; cursor: pointer;" class="w3-btn w3-border w3-white w3-center w3-hover-black">&raquo; К л і к &laquo;</label>
+                                    <label id="mainPhotoLabel"><b>Головне фото:</b></label>
+                                    <input id="upload" type="file" name="image" class="upload w3-input w3-border" />
+                                    <label id="uploadLabel" for="upload" class="uploadLabel enabled unselectable w3-btn w3-border w3-white w3-center w3-hover-black" >&raquo; К л і к &laquo;</label>
                                     </p>
                                     <p>
                                     <label><b>Підпис до фото:</b></label>
-                                    <input class="w3-input w3-border w3-animate-input w3-hover-light-grey" style="width:50%" type="text" name="label" placeholder="На фото, а бімба!" />
+                                    <input type="text" name="label" class="w3-input w3-border w3-animate-input w3-hover-light-grey" style="width:50%" placeholder="На фото, а бімба!" />
                                     </p>
                                 </div>
                                 <div class="w3-third">
                                     <p>
                                     <label><b>Країна:</b></label>
-                                    <input class="w3-input w3-border w3-animate-input w3-hover-light-grey" style="width:50%" type="text" name="country" placeholder="USA" />
+                                    <input type="text" name="country" th:value="${post.country}" class="w3-input w3-border w3-animate-input w3-hover-light-grey" style="width:50%" placeholder="USA" />
                                     </p>
                                     <p>
                                     <label><b>Регіон:</b></label>
-                                    <input class="w3-input w3-border w3-animate-input w3-hover-light-grey" style="width:50%" type="text" name="region" placeholder="East Coast" />
+                                    <input type="text" name="region" th:value="${post.region}" class="w3-input w3-border w3-animate-input w3-hover-light-grey" style="width:50%" placeholder="East Coast" />
                                     </p>
                                     <p>
                                     <label><b>Місто:</b></label>
-                                    <input class="w3-input w3-border w3-animate-input w3-hover-light-grey" style="width:50%" type="text" name="city" placeholder="New York" />
+                                    <input type="text" name="city" th:value="${post.city} ?: _" class="w3-input w3-border w3-animate-input w3-hover-light-grey" style="width:50%" placeholder="New York" />
                                     </p>
                                 </div>
                             </div>
@@ -81,15 +104,20 @@
                             <div class="w3-row w3-section">
                                 <div>
                                     <label><b>Опис:</b></label>
-                                    <textarea name="content" class="w3-input w3-border w3-hover-light-grey" rows="8" maxlength="4000" wrap="hard" placeholder="Розкажи про подорож і враження... Не більше 20'000 символів." required="required"></textarea>
-                                </div>
-                            </div>
-                            <div class="w3-row">
-                                <div class="w3-col m8 s12">
-                                    <p><input type="submit" value="ДОБАВИТИ" class="w3-btn w3-padding-large w3-white w3-border w3-hover-border-black" /></p>
+                                    <textarea th:text="${post.content}" name="content" class="w3-input w3-border w3-hover-light-grey" rows="8" maxlength="4000" wrap="hard" placeholder="Розкажи про подорож і враження... Не більше 20'000 символів." required="required"></textarea>
                                 </div>
                             </div>
                         </form>
+                        <div class="w3-row w3-padding-0">
+                            <div class="w3-container w3-half w3-padding-0">
+                                <button type="submit" class="w3-btn w3-padding-large w3-white w3-border w3-hover-border-black" form="editForm"><b>ЗБЕРЕГТИ ЗМІНИ</b></button>
+                            </div>
+                            <div class="w3-container w3-half w3-padding-0">
+                                <form th:action="@{|/post/${post.id}/delete|}" method="POST">
+                                    <a href="edit-post.html" th:href="@{|/post/${post.id}/delete|}" class="w3-btn w3-padding-large w3-white w3-border w3-hover-border-red w3-hover-red w3-right" ><b>ВИДАЛИТИ ЗАПИС</b></a>
+                                </form>
+                            </div>
+                        </div>
                     </div>
                 </div>
            </div>
@@ -134,7 +162,7 @@
         <p class="w3-center">Yulia Poletaeva &copy; 2017</p>
     </footer>
     <script>
-        var inputs = document.querySelectorAll('.inputfile');
+        var inputs = document.querySelectorAll('.upload');
         
         Array.prototype.forEach.call(inputs, function(input) {
             var label = input.nextElementSibling;
@@ -149,6 +177,21 @@
                 else
                     label.innerHTML = labelVal;
             });
+        });
+        
+        var upload = document.getElementById("upload");
+        var uploadLabel = document.getElementById("uploadLabel");
+        var mainPhotoLabel = document.getElementById("mainPhotoLabel");
+        
+        document.getElementById("deleteImage").addEventListener('change', function(){
+            upload.disabled = !upload.disabled;
+            if (upload.disabled) {
+                uploadLabel.className = "w3-text-grey uploadLabel disabled unselectable w3-border w3-white w3-center"
+                mainPhotoLabel.className = "w3-text-grey disabled";
+            } else {
+                uploadLabel.className = "w3-text-black uploadLabel enabled unselectable w3-btn w3-border w3-white w3-center w3-hover-black";
+                mainPhotoLabel.className = "w3-text-black enabled";
+            }
         });
     </script>
 </body>

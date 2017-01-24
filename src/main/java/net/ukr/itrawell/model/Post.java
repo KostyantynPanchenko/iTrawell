@@ -2,9 +2,11 @@ package net.ukr.itrawell.model;
 
 import java.time.LocalDateTime;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Convert;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -39,7 +41,7 @@ public class Post {
     @Convert(converter = LocalDateTimeConverter.class)
     private LocalDateTime created;
     
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "image_id", referencedColumnName = "id")
     private Image image;
     
@@ -49,6 +51,10 @@ public class Post {
         return id;
     }
 
+    public void setId(Integer id) {
+        this.id = id;
+    }
+    
     public String getTitle() {
         return title;
     }
