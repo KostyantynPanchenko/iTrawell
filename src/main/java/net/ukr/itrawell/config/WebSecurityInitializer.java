@@ -3,6 +3,7 @@
  */
 package net.ukr.itrawell.config;
 
+import org.springframework.core.annotation.Order;
 import org.springframework.security.web.context.AbstractSecurityWebApplicationInitializer;
 
 /**
@@ -18,6 +19,8 @@ import org.springframework.security.web.context.AbstractSecurityWebApplicationIn
  * @version 1.0
  * @since 	24.01.2017
  */
-public class WebSecurityInitializer extends AbstractSecurityWebApplicationInitializer {
+
+//public class WebSecurityInitializer extends AbstractSecurityWebApplicationInitializer {
+public class WebSecurityInitializer {
 
 }
