@@ -1,6 +1,5 @@
 package net.ukr.itrawell.config;
 
-import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -14,7 +13,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
             .authorizeRequests()
-                .anyRequest().authenticated()
+                .anyRequest().permitAll()
+//                .anyRequest().authenticated()
 //                .antMatchers("/**").permitAll()
 //                .antMatchers("/resources/**").permitAll()
 //                .antMatchers(HttpMethod.POST, "/post/**").access("isAuthenticated() and hasRole('ADMIN')")
@@ -41,13 +41,5 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .withUser("user").password("password").roles("USER").and()
                 .withUser("admin").password("admin").roles("USER", "ADMIN");
     }
-    
-//    @Bean
-//    public SpringTemplateEngine templateEngine() {
-//        SpringTemplateEngine engine = new SpringTemplateEngine();
-//        Set<IDialect> dialects = new HashSet<>();
-//        dialects.add(new SpringSecurityDialect());
-//        engine.setAdditionalDialects(dialects);
-//        return engine;
-//    }
+
 }
